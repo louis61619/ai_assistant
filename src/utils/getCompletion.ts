@@ -1,8 +1,8 @@
-import { ChatLogType } from '../types';
+import { Message } from '../types';
 
 type Props = {
   prompt: string;
-  history?: ChatLogType[];
+  history?: Message[];
   options?: {
     temperature?: number;
     max_tokens?: number;
