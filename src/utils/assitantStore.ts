@@ -18,7 +18,6 @@ const getList = () => {
 };
 
 const updateList = (list: AssistantList) => {
-  console.log(list);
   setLocal(ASSISTANT_STORAGE_KEY, list);
 };
 
