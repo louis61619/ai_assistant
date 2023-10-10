@@ -1,15 +1,15 @@
 'use client';
-import { Assistant, AssistantList, EditAssistant } from '@/types';
-import { useEffect, useState } from 'react';
-import { useDisclosure } from '@mantine/hooks';
+import { AssistantConfig } from '@/components/assistant-config';
+import { ASSISTANT_INIT } from '@/constants';
+import { AssistantList, EditAssistant } from '@/types';
 import assistantStore from '@/utils/assitantStore';
 import { newId } from '@/utils/newId';
+import { ActionIcon, Badge, Card, Drawer, Group, Text } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
 import { notifications } from '@mantine/notifications';
-import { ASSISTANT_INIT } from '@/constants';
-import Link from 'next/link';
-import { ActionIcon, Text, Card, Group, Badge, Drawer } from '@mantine/core';
 import { IconChevronLeft, IconPencil, IconPlus } from '@tabler/icons-react';
-import { AssistantConfig } from '@/components/assistant-config';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 const showNotification = (message: string) => {
   notifications.show({

@@ -1,8 +1,4 @@
-import { NextResponse } from 'next/server';
-import type { NextApiRequest, NextApiResponse } from 'next';
 import { MessageList } from '@/types';
-import stream from 'stream';
-import fs from 'fs';
 import { createParser, type ParsedEvent, type ReconnectInterval } from 'eventsource-parser';
 
 type StreamPayload = {
@@ -24,7 +20,7 @@ const sleep = (time: number) => {
 const encoder = new TextEncoder();
 
 async function* makeIterator() {
-  const string = `It's fake chatgpt anwser.`;
+  const string = `This is a fake response. If you want to use it, please clone and use the env file to set OPENAI_API_KEY.`;
   const arr = string.split(' ');
   for (let i = 0; i < arr.length; i++) {
     const isLastWord = i === arr.length - 1;
@@ -78,7 +74,10 @@ export async function POST(req: Request, res: Response) {
     max_tokens: +max_tokens || 1000,
   };
 
-  // const stream = fakeReadableStream();
+  if (process.env.DEMO === 'true') {
+    const stream = fakeReadableStream();
+    return new Response(stream);
+  }
   const stream = await requestStream(data);
   return new Response(stream);
 }

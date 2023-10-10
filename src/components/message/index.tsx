@@ -1,15 +1,12 @@
 'use client';
-import { Assistant, MessageList, SessionList } from '@/types';
-import { IconDotsVertical, IconEraser, IconPlus, IconSend, IconSendOff, IconSettings } from '@tabler/icons-react';
-import * as chatStorage from '@/utils/chatStorage';
-import { getCompletion } from '@/utils/getCompletion';
-import { getLocal, setLocal } from '@/utils/storage';
-import { ActionIcon, Button, Popover, Select, Textarea, clsx } from '@mantine/core';
-import React, { useEffect, useState, KeyboardEvent, useRef } from 'react';
+import { Assistant, MessageList } from '@/types';
 import chatService from '@/utils/chatService';
+import * as chatStorage from '@/utils/chatStorage';
+import { ActionIcon, Textarea, clsx } from '@mantine/core';
+import { IconEraser, IconSend, IconSendOff, IconSettings } from '@tabler/icons-react';
 import Link from 'next/link';
+import React, { KeyboardEvent, useEffect, useRef, useState } from 'react';
 import { AssistantSelect } from '../assistant-select';
-import assistantStore from '@/utils/assitantStore';
 
 const { clearMessages, getMessges, updateMessages } = chatStorage;
 

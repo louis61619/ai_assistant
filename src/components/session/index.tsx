@@ -1,8 +1,8 @@
-import { useEffect, useState, HTMLAttributes } from 'react';
+import { SessionList } from '@/types';
 import * as chatStorage from '@/utils/chatStorage';
-import { Session as SessionType, SessionList } from '@/types';
 import { ActionIcon, ColorScheme, clsx, useMantineColorScheme } from '@mantine/core';
-import { IconMessagePlus, IconSettings, IconTrash } from '@tabler/icons-react';
+import { IconMessagePlus, IconTrash } from '@tabler/icons-react';
+import { useEffect, useState } from 'react';
 import { EdittableText } from '../editable-text';
 
 type SessionProps = {
