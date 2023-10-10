@@ -73,13 +73,13 @@ export async function POST(req: Request, res: Response) {
       },
     ],
     stream: true,
-    ...options,
+    // ...options,
     temperature: +temperature || 0.7,
     max_tokens: +max_tokens || 1000,
   };
 
-  const stream = fakeReadableStream();
-  // const stream = await requestStream(data);
+  // const stream = fakeReadableStream();
+  const stream = await requestStream(data);
   return new Response(stream);
 }
 
