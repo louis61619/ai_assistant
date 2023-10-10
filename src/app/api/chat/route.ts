@@ -21,32 +21,19 @@ const sleep = (time: number) => {
   });
 };
 
-function fakeReadableStream(): ReadableStream<Uint8Array> {
-  const Readable = stream.Readable;
-  const _stream = new Readable();
-  _stream._read = () => {}; // redundant? see update below
-  _stream.push(`it's fake chat gpt answer`);
-  _stream.push(null);
-  return new ReadableStream({
-    start(controller) {
-      _stream.on('data', (chunk: Buffer) => controller.enqueue(new Uint8Array(chunk)));
-      _stream.on('end', () => controller.close());
-      _stream.on('error', (error: NodeJS.ErrnoException) => controller.error(error));
-    },
-    cancel() {
-      _stream.destroy();
-    },
-  });
-}
-
 const encoder = new TextEncoder();
 
 async function* makeIterator() {
-  yield encoder.encode('<p>One</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Two</p>');
-  await sleep(200);
-  yield encoder.encode('<p>Three</p>');
+  const string = `It's fake chatgpt anwser.`;
+  const arr = string.split(' ');
+  for (let i = 0; i < arr.length; i++) {
+    const isLastWord = i === arr.length - 1;
+    const word = arr[i] + (isLastWord ? '' : ' ');
+    yield encoder.encode(word);
+    if (!isLastWord) {
+      await sleep(100);
+    }
+  }
 }
 
 function iteratorToStream(iterator: any) {
@@ -63,15 +50,21 @@ function iteratorToStream(iterator: any) {
   });
 }
 
+function fakeReadableStream(): ReadableStream<Uint8Array> {
+  return iteratorToStream(makeIterator());
+}
+
 export async function POST(req: Request, res: Response) {
   const { prompt, history = [], options = {} } = await req.json();
+
+  const { max_tokens, temperature } = options;
 
   const data = {
     model: 'gpt-3.5-turbo',
     messages: [
       {
         role: 'system',
-        content: 'You are a helpful assistant.',
+        content: options.prompt,
       },
       ...history,
       {
@@ -81,10 +74,12 @@ export async function POST(req: Request, res: Response) {
     ],
     stream: true,
     ...options,
+    temperature: +temperature || 0.7,
+    max_tokens: +max_tokens || 1000,
   };
 
-  // const stream = fakeReadableStream();
-  const stream = await requestStream(data);
+  const stream = fakeReadableStream();
+  // const stream = await requestStream(data);
   return new Response(stream);
 }
 
