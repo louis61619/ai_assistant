@@ -43,14 +43,16 @@ export const Session = ({ sessionId, onChange }: SessionProps) => {
     };
     const list = chatStorage.addSession(newSession);
     setSessionList(list);
+    onChange(newSession.id);
   };
 
   const removeSession = (id: string) => {
     const list = chatStorage.removeSession(id);
+    setSessionList(list);
+
     if (sessionId === id) {
       onChange(list[0].id);
     }
-    setSessionList(list);
   };
 
   return (
@@ -79,13 +81,16 @@ export const Session = ({ sessionId, onChange }: SessionProps) => {
                   onSave={(name) => chatStorage.updateSession(id, { name })}
                   active={session.id === sessionId}
                 />
-                <IconTrash
-                  className="invisible mx-1 cursor-pointer group-hover:visible"
-                  color="gray"
-                  onClick={() => {
-                    removeSession(session.id);
-                  }}
-                />
+                {sessionList.length > 1 ? (
+                  <IconTrash
+                    className="invisible mx-1 cursor-pointer group-hover:visible"
+                    color="gray"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      removeSession(session.id);
+                    }}
+                  />
+                ) : null}
               </div>
             );
           })}

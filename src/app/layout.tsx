@@ -11,7 +11,7 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'AI assistant',
-  description: 'helpful AI assistant',
+  description: 'helpful ',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

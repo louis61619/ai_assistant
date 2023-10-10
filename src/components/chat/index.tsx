@@ -29,7 +29,12 @@ export const Chat = () => {
 
   return (
     <div className="flex h-screen w-full overflow-hidden">
-      <Session sessionId={sessionId} onChange={setSessionId} />
+      <Session
+        sessionId={sessionId}
+        onChange={(id) => {
+          setSessionId(id);
+        }}
+      />
       <Message sessionId={sessionId} />
     </div>
   );

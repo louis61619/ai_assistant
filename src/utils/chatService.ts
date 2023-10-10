@@ -41,7 +41,7 @@ class ChatService {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(params),
-        signal: this.controller.signal
+        signal: this.controller.signal,
       });
       const data = resp.body;
       if (!data) {

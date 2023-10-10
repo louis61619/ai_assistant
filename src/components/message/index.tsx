@@ -96,6 +96,7 @@ export const Message = ({ sessionId: id }: { sessionId: string }) => {
 
   useEffect(() => {
     if (!id) return;
+
     const logs = getMessges(id);
     setMessageList(logs);
   }, [id]);
@@ -142,9 +143,9 @@ export const Message = ({ sessionId: id }: { sessionId: string }) => {
   };
 
   return (
-    <div className="relative flex w-full flex-1 overflow-y-auto">
+    <div className="relative flex w-full flex-1 overflow-y-auto ">
       <div className="absolute top-0 w-full shadow-sm">
-        <div className="relative mx-auto flex h-[3rem] w-[calc(100%-50px)] items-center justify-center bg-white pr-4 lg:w-[calc(100%-115px)]">
+        <div className="relative mx-auto flex h-[3rem] w-[calc(100%-50px)] max-w-5xl items-center justify-center bg-white pr-4 lg:w-[calc(100%-115px)]">
           {/* <Select data={sessionList.map((session) => session.name)}></Select> */}
           {/* <Popover>
             <Popover.Target>
@@ -190,7 +191,7 @@ export const Message = ({ sessionId: id }: { sessionId: string }) => {
           }
         }}
       >
-        <div className="mx-auto flex w-[calc(100%-50px)] flex-col rounded-sm px-4 pb-[180px] pt-[60px] lg:w-[calc(100%-115px)]">
+        <div className="mx-auto flex w-[calc(100%-50px)] max-w-5xl flex-col rounded-sm px-4 pb-[180px] pt-[60px] lg:w-[calc(100%-115px)]">
           {messages.map((chat, index) => {
             return (
               <div
@@ -214,7 +215,7 @@ export const Message = ({ sessionId: id }: { sessionId: string }) => {
       </div>
 
       <div className="absolute bottom-0 w-full">
-        <div className="mx-auto flex w-[calc(100%-50px)] items-center bg-white pb-4 pr-4 pt-2 lg:w-[calc(100%-115px)]">
+        <div className="mx-auto flex w-[calc(100%-50px)] max-w-5xl items-center bg-white pb-4 pr-4 pt-2 lg:w-[calc(100%-115px)]">
           <ActionIcon loading={loading} onClick={onClear}>
             <IconEraser />
           </ActionIcon>
