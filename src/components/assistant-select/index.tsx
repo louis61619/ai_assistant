@@ -24,16 +24,18 @@ export const AssistantSelect = ({ value, loading, onChange }: Props) => {
   };
 
   return (
-    <Select
-      onChange={onAssistantChange}
-      disabled={loading}
-      className="[&_.mantine-Select-input]:text-center [&_.mantine-Select-input]:font-bold"
-      variant="unstyled"
-      value={value}
-      data={list.map((item) => ({
-        value: item.id,
-        label: item.name,
-      }))}
-    ></Select>
+    <div>
+      <Select
+        onChange={onAssistantChange}
+        disabled={loading}
+        className="[&_.mantine-Select-input]:text-center [&_.mantine-Select-input]:font-bold"
+        variant="unstyled"
+        value={value}
+        data={list.map((item) => ({
+          value: item.id,
+          label: item.name,
+        }))}
+      ></Select>
+    </div>
   );
 };

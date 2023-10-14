@@ -2,7 +2,8 @@
 import { Assistant, MessageList } from '@/types';
 import chatService from '@/utils/chatService';
 import * as chatStorage from '@/utils/chatStorage';
-import { ActionIcon, Textarea, clsx } from '@mantine/core';
+import { ActionIcon, Textarea } from '@mantine/core';
+import clsx from 'clsx';
 import { IconEraser, IconSend, IconSendOff, IconSettings } from '@tabler/icons-react';
 import Link from 'next/link';
 import React, { KeyboardEvent, useEffect, useRef, useState } from 'react';

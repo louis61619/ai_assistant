@@ -3,11 +3,9 @@ import React, { useEffect, useState } from 'react';
 import { Message } from '../message';
 import { Session } from '../session';
 import { addSession, getSession, getSessionList } from '@/utils/chatStorage';
-import { useMantineColorScheme } from '@mantine/core';
 
 export const Chat = () => {
   const [sessionId, setSessionId] = useState('');
-  const { colorScheme } = useMantineColorScheme();
 
   useEffect(() => {
     const init = () => {

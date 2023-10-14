@@ -77,7 +77,7 @@ export default function Assistant() {
             <IconChevronLeft />
           </ActionIcon>
         </Link>
-        <Text weight={500} size="lg">
+        <Text fw={500} size="lg">
           assistan
         </Text>
         <ActionIcon onClick={() => onAddAssistant()}>
@@ -93,7 +93,7 @@ export default function Assistant() {
             radius="md"
             className="group w-full max-w-sm transition-all duration-300"
           >
-            <Text weight={500} className="line-clamp-1">
+            <Text fw={500} className="line-clamp-1">
               {item.name}
             </Text>
             <Text size="sm" color="dimmed" className="mt-2 line-clamp-3">
@@ -122,8 +122,13 @@ export default function Assistant() {
           </Card>
         ))}
       </div>
-      <Drawer opened={opened} onClose={drawerHandler.close} size="lg" position="right">
-        {/* {editAssistant ? <AssistantConfig save={() => {}} remove={() => {}} assistant={editAssistant} /> : null} */}
+      <Drawer
+        opened={opened}
+        onClose={drawerHandler.close}
+        size="lg"
+        // transitionProps={{ transition: 'slide-left', duration: 150, timingFunction: 'linear' }}
+        position="right"
+      >
         <AssistantConfig save={saveAssistant} remove={removeAssistant} assistant={editAssistant!} />
       </Drawer>
     </div>

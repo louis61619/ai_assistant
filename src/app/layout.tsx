@@ -1,5 +1,6 @@
 import { Conetext } from '@/components/context';
 import './globals.css';
+import '@mantine/core/styles.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 

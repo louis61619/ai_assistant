@@ -1,7 +1,8 @@
 import { SessionList } from '@/types';
 import * as chatStorage from '@/utils/chatStorage';
-import { ActionIcon, ColorScheme, clsx, useMantineColorScheme } from '@mantine/core';
+import { ActionIcon, MantineColorScheme, useMantineColorScheme } from '@mantine/core';
 import { IconMessagePlus, IconTrash } from '@tabler/icons-react';
+import clsx from 'clsx';
 import { useEffect, useState } from 'react';
 import { EdittableText } from '../editable-text';
 
@@ -12,16 +13,16 @@ type SessionProps = {
 
 const itemBaseClasses = 'flex cursor-pointer h-[2.4rem] items-center justify-between group px-2 rounded-md';
 
-const generateItemClass = (id: string, sessionId: string, colorScheme: ColorScheme) => {
+const generateItemClass = (id: string, sessionId: string, MantineColorScheme: MantineColorScheme) => {
   return clsx([
     itemBaseClasses,
     {
-      'hover:bg-gray-300/69': colorScheme === 'light',
-      'bg-gray-200/60': id !== sessionId && colorScheme === 'light',
-      'bg-gray-300': id === sessionId && colorScheme === 'light',
-      'hover:bg-zinc-800/50': colorScheme === 'dark',
-      'bg-zinc-800/20': id !== sessionId && colorScheme === 'dark',
-      'bg-zinc-800/90': id === sessionId && colorScheme === 'dark',
+      'hover:bg-gray-300/69': MantineColorScheme === 'light',
+      'bg-gray-200/60': id !== sessionId && MantineColorScheme === 'light',
+      'bg-gray-300': id === sessionId && MantineColorScheme === 'light',
+      'hover:bg-zinc-800/50': MantineColorScheme === 'dark',
+      'bg-zinc-800/20': id !== sessionId && MantineColorScheme === 'dark',
+      'bg-zinc-800/90': id === sessionId && MantineColorScheme === 'dark',
     },
   ]);
 };
