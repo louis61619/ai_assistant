@@ -20,6 +20,7 @@ export const Message = ({ sessionId: id }: { sessionId: string }) => {
   const [isInBottm, setIsInBottom] = useState(false);
   const listRef = useRef<HTMLDivElement>(null);
   const [init, setInit] = useState(false);
+  const [isOnComposition, setIsOnComposition] = useState(false);
 
   useEffect(() => {
     const session = chatStorage.getSession(id);
@@ -133,7 +134,7 @@ export const Message = ({ sessionId: id }: { sessionId: string }) => {
   };
 
   const onKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
+    if (e.key === 'Enter' && !e.shiftKey && !isOnComposition) {
       e.preventDefault();
       onSubmit();
     }
@@ -226,6 +227,12 @@ export const Message = ({ sessionId: id }: { sessionId: string }) => {
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
             onKeyDown={(e) => onKeyDown(e)}
+            onCompositionStart={() => {
+              setIsOnComposition(true);
+            }}
+            onCompositionEnd={() => {
+              setIsOnComposition(false);
+            }}
             id="1"
           ></Textarea>
           <ActionIcon

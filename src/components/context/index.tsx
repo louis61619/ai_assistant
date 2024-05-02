@@ -2,6 +2,7 @@
 import { MantineProvider, MantineColorScheme, createTheme, ActionIcon } from '@mantine/core';
 import React, { useState } from 'react';
 import { Notifications } from '@mantine/notifications';
+import '@mantine/notifications/styles.css';
 
 const theme = createTheme({
   components: {
@@ -24,7 +25,7 @@ export const Conetext = ({ children }: { children: React.ReactNode }) => {
   // };
   return (
     <MantineProvider theme={theme} defaultColorScheme="light">
-      <Notifications position="top-right" zIndex={999}></Notifications>
+      <Notifications position="bottom-right" zIndex={999}></Notifications>
       {children}
     </MantineProvider>
   );
