@@ -1,9 +1,14 @@
 
 ![Alt text](image.png)
 
-這是一個基於 chatgpt api 實作的 ai 助手範例
+這是一個基於 chatgpt api 實作的 ai 助手範例，啟動需要先申請 [User settings - OpenAI API](https://platform.openai.com/settings/profile?tab=api-keys) 的 token 並放入 env 文件中
 
-會從搭建應用的角度看如何構建一個基於 chatgpt api 的產品
+```
+OPENAI_API_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXX
+GPT_END_POINT=https://api.openai.com
+```
+
+接下來會從搭建應用的角度看如何構建一個基於 chatgpt api 的產品
 
 如果簡單將 ai 功能的開發分為 3 個等級：
 
@@ -11,11 +16,13 @@
 
 2. 參數訓練，使用已經完成的 AI 庫 transflow、stable diffusion，透過給予不同資料進行訓練能夠取得不同的成果
 
-3. 直接調用，如 open ai 提供的所有 api，開發者可以不關心 ai 底層運作邏輯和訓練過程，透過直接調用 opean ai 提供的 api 建立一個應用
+3. 直接調用，如 open ai 提供的所有 api
+
+第三種開發方式，開發者可以不關心 ai 底層運作邏輯和訓練過程，透過直接調用 opean ai 提供的 api 建立一個應用
 
 #### 透過第三方服務建立應用
 
-如果要快速開發一個產品：
+如果要快速開發一個對話型的 ai 產品：
 
 登入可以使用 google auth api
 
@@ -68,7 +75,7 @@ prompt：用戶輸入指令
 api 文檔：
 [API Reference - OpenAI API](https://platform.openai.com/docs/api-reference/introduction)
 
-調用 api 要多少錢
+那調用一次 api 要多少錢？
 
 [https://openai.com/pricing](https://openai.com/pricing)
 
