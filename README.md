@@ -1,7 +1,7 @@
 
 ![Alt text](image.png)
 
-這是一個基於 chatgpt api 實作的 ai 助手範例，啟動需要先申請 [User settings - OpenAI API](https://platform.openai.com/settings/profile?tab=api-keys) 的 token 並放入 env 文件中
+這是一個基於 chatgpt api 實作的 ai 助手範例，啟動需要先申請 [User settings - OpenAI API](https://platform.openai.com/settings/profile?tab=api-keys) 的 token 並放入 .env.local 文件中
 
 ```
 OPENAI_API_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXX
